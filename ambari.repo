@@ -1,0 +1,7 @@
+[Updates-ambari-2.2.0.0]
+name=ambari-2.2.0.0 - Updates
+baseurl=http://192.168.2.57/ambari-2.2.0.0/centos7/2.2.0.0-1310
+gpgcheck=0
+gpgkey=http://.192.168.2.57/ambari-2.2.0.0/centos7/2.2.0.0-1310/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
