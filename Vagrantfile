@@ -8,8 +8,7 @@
 $script = <<SCRIPT
 # limits
 ulimit -n 10000
-echo "" > /etc/hosts
-echo "127.0.0.1 $1 $1.localdomain" >> /etc/hosts
+echo "127.0.0.1 $1 $1.localdomain localhost" > /etc/hosts
 echo "::1 $1 $1.localdomain" >> /etc/hosts
 echo "192.168.2.51 node1 node1.localdomain" >> /etc/hosts
 echo "192.168.2.52 node2 node2.localdomain" >> /etc/hosts
@@ -25,7 +24,8 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder ".", "/vagrant", :disabled => true
   config.ssh.username = "root"
   config.ssh.password = "root"
-
+  config.vm.provision "file", source: "ambari.repo", destination: "/etc/yum.repos.d/ambari.repo"
+  config.vm.provision "file", source: "hdp.repo", destination: "/etc/yum.repos.d/hdp.repo"
 	config.vm.define "web" do |web|
 		web.vm.provider "virtualbox" do |v|
 			v.memory = 512
