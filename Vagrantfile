@@ -8,6 +8,9 @@
 $script = <<SCRIPT
 # limits
 ulimit -n 10000
+# disable firewall
+chkconfig firewalld off
+systemctl stop firewalld
 echo "127.0.0.1 localhost" > /etc/hosts
 echo "::1 localhost" >> /etc/hosts
 echo "192.168.2.51 node1 node1.localdomain" >> /etc/hosts
