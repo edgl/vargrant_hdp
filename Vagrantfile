@@ -8,8 +8,8 @@
 $script = <<SCRIPT
 # limits
 ulimit -n 10000
-echo "127.0.0.1 $1 $1.localdomain localhost" > /etc/hosts
-echo "::1 $1 $1.localdomain" >> /etc/hosts
+echo "127.0.0.1 localhost" > /etc/hosts
+echo "::1 localhost" >> /etc/hosts
 echo "192.168.2.51 node1 node1.localdomain" >> /etc/hosts
 echo "192.168.2.52 node2 node2.localdomain" >> /etc/hosts
 echo "192.168.2.53 node3 node3.localdomain" >> /etc/hosts
