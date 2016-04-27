@@ -38,6 +38,9 @@ Vagrant.configure(2) do |config|
     hdp_ambari.vm.network "public_network", ip: "192.168.2.55", netmask: "255.255.255.0", hostsupdater: "skip"
     hdp_ambari.vm.provision "shell", inline: $script, args: "node5"
 		hdp_ambari.vm.provision :hosts, :sync_hosts => true
+		hdp_ambari.vm.provider "virtualbox" do |v|
+			v.memory = 1024
+		end
   end
 
   config.vm.define "hdp_nn" do |hdp_nn|
@@ -49,11 +52,11 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "hdp_snn" do |hdp_snn|
-   hdp_snn.vm.box = "hdp"
-   hdp_snn.vm.hostname = "node2"
-   hdp_snn.vm.network "public_network", ip: "192.168.2.52", netmask: "255.255.255.0", hostsupdater: "skip"
-   hdp_snn.vm.provision "shell", inline: $script, args: "node2"
-	 hdp_snn.vm.provision :hosts, :sync_hosts => true
+    hdp_snn.vm.box = "hdp"
+    hdp_snn.vm.hostname = "node2"
+    hdp_snn.vm.network "public_network", ip: "192.168.2.52", netmask: "255.255.255.0", hostsupdater: "skip"
+    hdp_snn.vm.provision "shell", inline: $script, args: "node2"
+	  hdp_snn.vm.provision :hosts, :sync_hosts => true
   end
 
   config.vm.define "hdp_dn1" do |hdp_dn1|
@@ -65,11 +68,10 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "hdp_dn2" do |hdp_dn2|
-   hdp_dn2.vm.box = "hdp"
-   hdp_dn2.vm.hostname = "node4"
-   hdp_dn2.vm.network "public_network", ip: "192.168.2.54", netmask: "255.255.255.0", hostsupdater: "skip"
-   hdp_dn2.vm.provision "shell", inline: $script, args: "node4"
-		hdp_dn2.vm.provision :hosts, :sync_hosts => true
+    hdp_dn2.vm.box = "hdp"
+    hdp_dn2.vm.hostname = "node4"
+    hdp_dn2.vm.network "public_network", ip: "192.168.2.54", netmask: "255.255.255.0", hostsupdater: "skip"
+    hdp_dn2.vm.provision "shell", inline: $script, args: "node4"
+    hdp_dn2.vm.provision :hosts, :sync_hosts => true
   end
-
 end
